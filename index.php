@@ -1,5 +1,7 @@
 <?php 
    require('top.php');
+
+   $res = mysqli_query($db, 'SELECT * FROM department order by id desc')
 ?>
 <div class="content pb-0">
             <div class="orders">
@@ -15,19 +17,28 @@
                               <table class="table ">
                                  <thead>
                                     <tr>
-                                       <th width="5%">S.No</th>
-                                       <th width="5%">ID</th>
-                                       <th width="70%">Department Name</th>
-                                       <th width="20%"></th>
+                                       <th width="8%">Sl.</th>
+                                       <th width="8%">ID</th>
+                                       <th width="67%">Department Name</th>
+                                       <th width="17%"></th>
                                     </tr>
                                  </thead>
                                  <tbody>
+                                 <?php 
+                                 $i = 1;
+                                 while ($row = mysqli_fetch_assoc($res)){?>
                                     <tr>
-                                       <td>Serial</td>
-                                       <td>Id</td>
-                                       <td>Department Name</td>
-                                       <td></td>
+                                       <td><?php echo $i ?></td>
+                                       <td><?php echo $row['id'] ?></td>
+                                       <td><?php echo $row['department'] ?></td>
+                                       <td>
+                                          <a class="btn btn-primary" href="">Edit</a>
+                                          <a class="btn btn-danger" href="">Delete</a>
+                                       </td>
                                     </tr>
+                                 <?php 
+                                    $i++;
+                                 } ?>
                                  </tbody>
                               </table>
                            </div>
