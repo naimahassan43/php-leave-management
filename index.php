@@ -1,5 +1,10 @@
 <?php 
    require('top.php');
+   //delete department
+   if(isset($_GET['type']) && $_GET['type'] == 'delete' && isset($_GET['id'])){
+      $id = mysqli_real_escape_string($db, $_GET['id']);
+      mysqli_query($db, "DELETE FROM department WHERE id = '$id' ");
+   }
 
    $res = mysqli_query($db, 'SELECT * FROM department order by id desc')
 ?>
@@ -33,7 +38,7 @@
                                        <td><?php echo $row['department'] ?></td>
                                        <td>
                                           <a class="btn btn-primary" href="">Edit</a>
-                                          <a class="btn btn-danger" href="">Delete</a>
+                                          <a class="btn btn-danger" href="index.php?id=<?php echo $row['id'] ?>&type=delete">Delete</a>
                                        </td>
                                     </tr>
                                  <?php 
