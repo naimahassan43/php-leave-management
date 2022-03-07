@@ -37,7 +37,7 @@
                                        <td><?php echo $row['id'] ?></td>
                                        <td><?php echo $row['department'] ?></td>
                                        <td>
-                                          <a class="btn btn-primary" href="">Edit</a>
+                                          <a class="btn btn-primary" href="add_department.php?id=<?php echo $row['id']?>">Edit</a>
                                           <a class="btn btn-danger" href="index.php?id=<?php echo $row['id'] ?>&type=delete">Delete</a>
                                        </td>
                                     </tr>
